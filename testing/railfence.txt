@@ -1,0 +1,81 @@
+/* string _cipherText = null;
+            int messageLength = _plainText.Length;
+            int fullLength = 0;
+
+            if(messageLength % _key != 0)
+            {
+                fullLength = messageLength + (_key - (messageLength % _key));
+            }
+            else
+            {
+                fullLength = messageLength;
+            }
+
+            string[,] railFence = new string[_key, fullLength];
+
+            while(messageLength < fullLength)
+            {
+                _plainText += "x";
+                messageLength++;
+            }
+
+            char[] plainTextArray = _plainText.ToCharArray();
+            int letterNum = 0;
+            int row = 0;
+            int iterations = fullLength / _key;
+
+            if(fullLength % _key != 0)
+            {
+                iterations++;
+                iterations /= 2;
+            }
+            else
+            {
+                if (iterations % 2 != 0)
+                { 
+                    iterations += 3;
+                }
+                iterations /= 2;
+            }
+
+            for(int x = 0; x <= iterations; x++)
+            {
+                while(row < _key)
+                {
+                    if (letterNum < railFence.GetLength(1))
+                    {
+                        railFence[row, letterNum] = plainTextArray[letterNum].ToString();
+                    }
+                    letterNum++;
+                    row++;
+                }
+                row -= 2;
+
+                if (letterNum < fullLength)
+                {
+                    while (row >= 0)
+                    {
+                        // breaks at 15, we need a reset key 5
+                        if (letterNum < railFence.GetLength(1))
+                        {
+                            railFence[row, letterNum] = plainTextArray[letterNum].ToString();
+                        }
+                        letterNum++;
+                        row--;
+                    }
+                    row += 2;
+                }
+            }
+
+            for(int _char = 0; _char < _key; _char++)
+            {
+                for(int _col = 0; _col < fullLength; _col++)
+                {
+                    if(railFence[_char, _col] != null)
+                    {
+                        _cipherText += railFence[_char, _col];
+                    }
+                }
+            }
+
+            return _cipherText; */
